@@ -1,0 +1,358 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "servers_azusqlpaas00001_name": {
+            "defaultValue": "azusqlpaas00001",
+            "type": "String"
+        },
+        "keys_ServiceManaged_name": {
+            "defaultValue": "ServiceManaged",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "databases_azusqlpaas00001_name": {
+            "defaultValue": "azusqlpaas00001",
+            "type": "String"
+        },
+        "encryptionProtector_current_name": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "firewallRules_AllowAllWindowsAzureIps_name": {
+            "defaultValue": "AllowAllWindowsAzureIps",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_1": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "databases_master_name": {
+            "defaultValue": "master",
+            "type": "String"
+        },
+        "geoBackupPolicies_Default_name": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "advisors_DropIndex_name": {
+            "defaultValue": "DropIndex",
+            "type": "String"
+        },
+        "advisors_CreateIndex_name": {
+            "defaultValue": "CreateIndex",
+            "type": "String"
+        },
+        "transparentDataEncryption_current_name": {
+            "defaultValue": "current",
+            "type": "String"
+        },
+        "auditingPolicies_Default_name_2": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "geoBackupPolicies_Default_name_1": {
+            "defaultValue": "Default",
+            "type": "String"
+        },
+        "advisors_ForceLastGoodPlan_name": {
+            "defaultValue": "ForceLastGoodPlan",
+            "type": "String"
+        },
+        "advisors_DbParameterization_name": {
+            "defaultValue": "DbParameterization",
+            "type": "String"
+        },
+        "transparentDataEncryption_current_name_1": {
+            "defaultValue": "current",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001'.",
+            "type": "Microsoft.Sql/servers",
+            "kind": "v12.0",
+            "name": "[parameters('servers_azusqlpaas00001_name')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "westus",
+            "scale": null,
+            "properties": {
+                "administratorLogin": "tsws",
+                "version": "12.0"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/auditingPolicies",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('auditingPolicies_Default_name'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "fullAuditLogsTableName": "SQLDBAuditLogsAzusqlpaas00001",
+                "auditLogsTableName": "Azusqlpaas00001",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001'.",
+            "type": "Microsoft.Sql/servers/databases",
+            "kind": "v12.0,user",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'))]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "databaseId": "9f02094e-5abd-4fdf-9dae-a4f8cbed6ec5",
+                "edition": "Standard",
+                "status": "Online",
+                "serviceLevelObjective": "S3",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
+                "maxSizeBytes": "53687091200",
+                "creationDate": "2018-05-01T15:30:02.807Z",
+                "currentServiceObjectiveId": "789681b8-ca10-4eb0-bdf2-e0b050601b40",
+                "requestedServiceObjectiveId": "789681b8-ca10-4eb0-bdf2-e0b050601b40",
+                "requestedServiceObjectiveName": "S3",
+                "sampleName": null,
+                "defaultSecondaryLocation": "East US",
+                "earliestRestoreDate": "2018-05-01T16:00:34.01Z",
+                "elasticPoolName": null,
+                "containmentState": 2,
+                "readScale": "Disabled",
+                "failoverGroupId": null,
+                "zoneRedundant": false,
+                "isUpgradeRequested": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/firewallRules/AllowAllWindowsAzureIps'.",
+            "type": "Microsoft.Sql/servers/firewallRules",
+            "kind": "v12.0",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('firewallRules_AllowAllWindowsAzureIps_name'))]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "0.0.0.0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/encryptionProtector/current'.",
+            "type": "Microsoft.Sql/servers/encryptionProtector",
+            "kind": "servicemanaged",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('encryptionProtector_current_name'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "serverKeyName": "ServiceManaged",
+                "serverKeyType": "ServiceManaged"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/keys/ServiceManaged'.",
+            "type": "Microsoft.Sql/servers/keys",
+            "kind": "servicemanaged",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('keys_ServiceManaged_name'))]",
+            "apiVersion": "2015-05-01-preview",
+            "scale": null,
+            "properties": {
+                "serverKeyType": "[parameters('keys_ServiceManaged_name')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/master/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/auditingPolicies",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_master_name'), '/', parameters('auditingPolicies_Default_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "useServerDefault": "Enabled",
+                "fullAuditLogsTableName": "SQLDBAuditLogsAzusqlpaas00001Master",
+                "auditLogsTableName": "Azusqlpaas00001Master",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/master/geoBackupPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/geoBackupPolicies",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_master_name'), '/', parameters('geoBackupPolicies_Default_name'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "state": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/master/transparentDataEncryption/current'.",
+            "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_master_name'), '/', parameters('transparentDataEncryption_current_name'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "status": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/advisors/CreateIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('advisors_CreateIndex_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/advisors/DropIndex'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('advisors_DropIndex_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/advisors/DbParameterization'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('advisors_DbParameterization_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/advisors/ForceLastGoodPlan'.",
+            "type": "Microsoft.Sql/servers/databases/advisors",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('advisors_ForceLastGoodPlan_name'))]",
+            "apiVersion": "2014-04-01",
+            "scale": null,
+            "properties": {
+                "autoExecuteValue": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/auditingPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/auditingPolicies",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('auditingPolicies_Default_name_2'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "auditingState": "New",
+                "eventTypesToAudit": "PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure",
+                "storageAccountName": null,
+                "storageAccountKey": null,
+                "storageAccountSecondaryKey": null,
+                "storageTableEndpoint": null,
+                "storageAccountResourceGroupName": null,
+                "storageAccountSubscriptionId": null,
+                "useServerDefault": "Enabled",
+                "fullAuditLogsTableName": "SQLDBAuditLogsAzusqlpaas00001Azusqlpaas00001",
+                "auditLogsTableName": "Azusqlpaas00001Azusqlpaas00001",
+                "retentionDays": "0"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/geoBackupPolicies/Default'.",
+            "type": "Microsoft.Sql/servers/databases/geoBackupPolicies",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('geoBackupPolicies_Default_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "state": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/e8d6108d-3653-4de8-b9ec-d925a6cfaea0/resourceGroups/sql-paas-testing-001/providers/Microsoft.Sql/servers/azusqlpaas00001/databases/azusqlpaas00001/transparentDataEncryption/current'.",
+            "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+            "name": "[concat(parameters('servers_azusqlpaas00001_name'), '/', parameters('databases_azusqlpaas00001_name'), '/', parameters('transparentDataEncryption_current_name_1'))]",
+            "apiVersion": "2014-04-01",
+            "location": "West US",
+            "scale": null,
+            "properties": {
+                "status": "Enabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('servers_azusqlpaas00001_name'))]",
+                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_azusqlpaas00001_name'), parameters('databases_azusqlpaas00001_name'))]"
+            ]
+        }
+    ]
+}
